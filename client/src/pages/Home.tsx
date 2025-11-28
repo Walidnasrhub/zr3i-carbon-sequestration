@@ -1,3 +1,4 @@
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Leaf, TrendingUp, Users, Globe, Zap, Phone, Mail } from "lucide-react";
