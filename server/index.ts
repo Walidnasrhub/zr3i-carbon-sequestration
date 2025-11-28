@@ -10,8 +10,9 @@ async function startServer() {
   const app = express();
   const server = createServer(app);
 
-  // Serve static files from dist/public
-  const staticPath = path.resolve(__dirname, "..", "public");
+  // Serve static files from public folder (relative to dist/index.js)
+  const staticPath = path.resolve(__dirname, "public");
+  console.log("[Server] Static path:", staticPath);
 
   app.use(express.static(staticPath));
 
