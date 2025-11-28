@@ -18,6 +18,8 @@ import ProfileSettings from "./pages/ProfileSettings";
 import FarmMapping from "./pages/FarmMapping";
 import CarbonCalculator from "./pages/CarbonCalculator";
 import Reports from "./pages/Reports";
+import FAQ from "./pages/FAQ";
+import KnowledgeBase from "./pages/KnowledgeBase";
 
 function Router() {
   return (
@@ -35,6 +37,8 @@ function Router() {
       <Route path={"/farm-mapping"} component={FarmMapping} />
       <Route path={"/carbon-calculator"} component={CarbonCalculator} />
       <Route path={"/reports"} component={Reports} />
+      <Route path={"/faq"} component={FAQ} />
+      <Route path={"/knowledge-base"} component={KnowledgeBase} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
