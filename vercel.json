@@ -2,16 +2,10 @@
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install",
   "outputDirectory": "dist/public",
-  "cleanUrls": true,
-  "functions": {
-    "dist/index.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
-  "routes": [
+  "rewrites": [
     {
-      "src": "^/(?!assets).*",
-      "dest": "/dist/index.js"
+      "source": "^/(?!assets).*",
+      "destination": "/dist/index.js"
     }
   ]
 }
