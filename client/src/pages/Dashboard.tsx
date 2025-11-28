@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ActivityFeed } from "@/components/ActivityFeed";
 import { FarmManager } from "@/components/FarmManager";
+import { EarningsTracker } from "@/components/EarningsTracker";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const mockData = [

@@ -16,6 +16,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProfileSettings from "./pages/ProfileSettings";
 import FarmMapping from "./pages/FarmMapping";
+import CarbonCalculator from "./pages/CarbonCalculator";
 
 function Router() {
   return (
@@ -31,6 +32,7 @@ function Router() {
       <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/profile"} component={ProfileSettings} />
       <Route path={"/farm-mapping"} component={FarmMapping} />
+      <Route path={"/carbon-calculator"} component={CarbonCalculator} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

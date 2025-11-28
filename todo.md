@@ -79,20 +79,25 @@
 - [ ] Exportable maps as PDF
 
 ## Phase 5: Carbon Footprint Calculation System
-- [ ] Energy calculator (diesel, electricity, fuel)
-- [ ] Input management (fertilizers, pesticides, herbicides)
-- [ ] Livestock module (enteric fermentation, manure)
-- [ ] Soil practices tracking (tillage, residue burning)
-- [ ] Transportation logging (equipment and product transport)
-- [ ] Date palm carbon models by age and species
-- [ ] Soil organic carbon tracking
-- [ ] Biomass accumulation calculations
-- [ ] Agroforestry system carbon benefits
-- [ ] Pre-farm gate emissions calculation
-- [ ] On-farm activities emissions and removals
-- [ ] Net carbon balance calculation
-- [ ] Certification-ready report formatting
-- [ ] Personalized carbon dashboard
+- [x] Energy calculator (diesel, electricity, fuel)
+- [x] Input management (fertilizers, pesticides, herbicides)
+- [x] Livestock module (enteric fermentation, manure)
+- [x] Soil practices tracking (tillage, residue burning)
+- [x] Transportation logging (equipment and product transport)
+- [x] Date palm carbon models by age and species
+- [x] Soil organic carbon tracking
+- [x] Biomass accumulation calculations
+- [x] Agroforestry system carbon benefits
+- [x] Pre-farm gate emissions calculation
+- [x] On-farm activities emissions and removals
+- [x] Net carbon balance calculation
+- [x] Certification-ready report formatting
+- [x] Personalized carbon dashboard
+- [x] CarbonCalculator page with interactive form
+- [x] CarbonMetricsDashboard with charts and metrics
+- [x] EarningsTracker component with payment history
+- [x] Environmental impact calculator
+- [x] Monthly and annual earnings projections
 - [ ] Regional benchmarking comparison
 - [ ] Reduction recommendations engine
 - [ ] Historical tracking (year-over-year)
