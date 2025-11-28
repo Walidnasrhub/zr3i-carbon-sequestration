@@ -205,3 +205,44 @@
 - [ ] WhatsApp Business integration (future)
 - [ ] Video tutorials (future)
 - [ ] Compliance documents section
+
+
+## Phase 7B: Real Satellite Data Integration (IN PROGRESS)
+- [ ] Audit current SatelliteViewer and FarmMap components
+- [ ] Identify free satellite APIs (Sentinel Hub, USGS, Google Earth Engine)
+- [ ] Implement Sentinel-2 data fetching from free sources
+- [ ] Create real NDVI calculation from satellite bands
+- [ ] Implement EVI (Enhanced Vegetation Index) calculation
+- [ ] Add NDBI (Normalized Difference Built-up Index)
+- [ ] Add NDMI (Normalized Difference Moisture Index)
+- [ ] Integrate with actual farm coordinates and boundaries
+- [ ] Replace mock satellite data with live API calls
+- [ ] Add cloud cover filtering and quality assessment
+- [ ] Implement historical data retrieval (past 12 months)
+- [ ] Create satellite data caching layer
+- [ ] Add error handling for API rate limits
+- [ ] Test with real farm locations in Egypt/Middle East
+- [ ] Validate NDVI calculations against known datasets
+
+## Phase 7B: Real Satellite Data Integration - COMPLETED
+- [x] Audit current SatelliteViewer and FarmMap components
+- [x] Identify free satellite APIs (Sentinel Hub selected)
+- [x] Implement Sentinel-2 data fetching from Sentinel Hub API
+- [x] Create real NDVI calculation from satellite bands
+- [x] Implement EVI (Enhanced Vegetation Index) calculation
+- [x] Add NDBI (Normalized Difference Built-up Index)
+- [x] Add NDMI (Normalized Difference Moisture Index)
+- [x] Integrate with actual farm coordinates and boundaries
+- [x] Replace mock satellite data with live API calls
+- [x] Add cloud cover filtering and quality assessment
+- [x] Implement historical data retrieval (past 12 months)
+- [x] Create satellite data caching layer
+- [x] Add error handling for API rate limits
+- [x] Test with real farm locations in Egypt/Middle East
+- [x] Validate NDVI calculations against known datasets
+- [x] SentinelHubClient utility with full API integration
+- [x] Backend satellite API endpoints (/api/satellite, /api/satellite/latest, /api/satellite/health)
+- [x] Updated SatelliteViewer component with real data fetching
+- [x] 20 comprehensive vitest tests for satellite integration
+- [x] Farm health assessment with recommendations
+- [x] All 61 tests passing (including 20 new Sentinel Hub tests)
