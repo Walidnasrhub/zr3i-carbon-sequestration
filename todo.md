@@ -17,14 +17,18 @@
 - [ ] Password reset functionality
 - [ ] Email verification system
 - [x] Secure password hashing
+- [x] Login form and page
+- [x] Dashboard page with stats and farm management
+- [x] Registration API endpoint
+- [x] Login API endpoint (basic structure)
 
 ## Phase 2: Farmer Profiles & Dashboard
-- [ ] Farmer profile page with personal information
-- [ ] Farm details management (name, location, size, crops)
-- [ ] Multi-farm support in single account
-- [ ] Personalized dashboard with farm overview
+- [x] Farmer profile page with personal information
+- [x] Farm details management (name, location, size, crops)
+- [x] Multi-farm support in single account
+- [x] Personalized dashboard with farm overview
 - [ ] Recent activity feed
-- [ ] Key metrics display (carbon balance, income projections)
+- [x] Key metrics display (carbon balance, income projections)
 - [ ] Document center for farm documents
 - [ ] Settings page (language, notifications, preferences)
 - [ ] Profile picture upload
