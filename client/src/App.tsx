@@ -6,38 +6,38 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
+import Farmers from "./pages/Farmers";
+import Investors from "./pages/Investors";
+import Partners from "./pages/Partners";
+import Enterprise from "./pages/Enterprise";
+import About from "./pages/About";
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/farmers"} component={Farmers} />
+      <Route path={"/investors"} component={Investors} />
+      <Route path={"/partners"} component={Partners} />
+      <Route path={"/enterprise"} component={Enterprise} />
+      <Route path={"/about"} component={About} />
       <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
   return (
     <ErrorBoundary>
-      <LanguageProvider>
-        <ThemeProvider
-          defaultTheme="light"
-          // switchable
-        >
+      <ThemeProvider defaultTheme="light">
+        <LanguageProvider>
           <TooltipProvider>
             <Toaster />
             <Router />
           </TooltipProvider>
-        </ThemeProvider>
-      </LanguageProvider>
+        </LanguageProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }
