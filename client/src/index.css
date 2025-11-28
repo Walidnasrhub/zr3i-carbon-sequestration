@@ -43,74 +43,76 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
+  /* Data-Driven Futurism Color Palette */
+  --primary: oklch(0.15 0.08 280); /* Deep Navy */
+  --primary-foreground: oklch(0.95 0.01 200); /* Light cyan text */
+  --sidebar-primary: oklch(0.15 0.08 280);
+  --sidebar-primary-foreground: oklch(0.95 0.01 200);
+  --chart-1: oklch(0.65 0.22 200); /* Electric Cyan */
+  --chart-2: oklch(0.75 0.18 130); /* Lime Green */
+  --chart-3: oklch(0.58 0.25 320); /* Magenta */
+  --chart-4: oklch(0.65 0.22 200); /* Cyan */
+  --chart-5: oklch(0.75 0.18 130); /* Lime */
   --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
+  --background: oklch(0.97 0.01 280); /* Near-white with cool tone */
+  --foreground: oklch(0.15 0.08 280); /* Deep Navy text */
+  --card: oklch(1 0 0); /* Pure white cards */
+  --card-foreground: oklch(0.15 0.08 280); /* Navy text on cards */
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
+  --popover-foreground: oklch(0.15 0.08 280);
+  --secondary: oklch(0.65 0.22 200); /* Electric Cyan */
+  --secondary-foreground: oklch(0.15 0.08 280);
+  --muted: oklch(0.9 0.02 280); /* Light gray-blue */
+  --muted-foreground: oklch(0.4 0.05 280); /* Medium navy */
+  --accent: oklch(0.75 0.18 130); /* Lime Green accent */
+  --accent-foreground: oklch(0.15 0.08 280);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --border: oklch(0.92 0.01 280); /* Cool gray border */
+  --input: oklch(0.96 0.01 280); /* Light input background */
+  --ring: oklch(0.65 0.22 200); /* Cyan focus ring */
+  --sidebar: oklch(0.15 0.08 280); /* Navy sidebar */
+  --sidebar-foreground: oklch(0.95 0.01 200); /* Light text on sidebar */
+  --sidebar-accent: oklch(0.65 0.22 200); /* Cyan accent in sidebar */
+  --sidebar-accent-foreground: oklch(0.15 0.08 280);
+  --sidebar-border: oklch(0.25 0.08 280); /* Darker navy border */
+  --sidebar-ring: oklch(0.65 0.22 200);
 }
 
 .dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
+  /* Data-Driven Futurism Dark Mode */
+  --primary: oklch(0.15 0.08 280); /* Deep Navy */
+  --primary-foreground: oklch(0.95 0.01 200); /* Light cyan */
+  --sidebar-primary: oklch(0.15 0.08 280);
+  --sidebar-primary-foreground: oklch(0.95 0.01 200);
+  --background: oklch(0.08 0.04 280); /* Very dark navy */
+  --foreground: oklch(0.92 0.01 200); /* Light cyan text */
+  --card: oklch(0.12 0.04 280); /* Dark navy card */
+  --card-foreground: oklch(0.92 0.01 200);
+  --popover: oklch(0.12 0.04 280);
+  --popover-foreground: oklch(0.92 0.01 200);
+  --secondary: oklch(0.65 0.22 200); /* Electric Cyan */
+  --secondary-foreground: oklch(0.15 0.08 280);
+  --muted: oklch(0.25 0.06 280); /* Medium navy */
+  --muted-foreground: oklch(0.7 0.08 200); /* Cyan text */
+  --accent: oklch(0.75 0.18 130); /* Lime Green */
+  --accent-foreground: oklch(0.15 0.08 280);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --border: oklch(0.2 0.05 280); /* Navy border */
+  --input: oklch(0.15 0.04 280); /* Dark input */
+  --ring: oklch(0.65 0.22 200); /* Cyan ring */
+  --chart-1: oklch(0.65 0.22 200);
+  --chart-2: oklch(0.75 0.18 130);
+  --chart-3: oklch(0.58 0.25 320);
+  --chart-4: oklch(0.65 0.22 200);
+  --chart-5: oklch(0.75 0.18 130);
+  --sidebar: oklch(0.08 0.04 280); /* Very dark navy */
+  --sidebar-foreground: oklch(0.92 0.01 200);
+  --sidebar-accent: oklch(0.65 0.22 200); /* Cyan */
+  --sidebar-accent-foreground: oklch(0.15 0.08 280);
+  --sidebar-border: oklch(0.2 0.05 280);
+  --sidebar-ring: oklch(0.65 0.22 200);
 }
 
 @layer base {
@@ -119,6 +121,21 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
