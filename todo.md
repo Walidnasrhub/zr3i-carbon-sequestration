@@ -27,12 +27,14 @@
 - [x] Farm details management (name, location, size, crops)
 - [x] Multi-farm support in single account
 - [x] Personalized dashboard with farm overview
-- [ ] Recent activity feed
+- [x] Recent activity feed
 - [x] Key metrics display (carbon balance, income projections)
 - [ ] Document center for farm documents
-- [ ] Settings page (language, notifications, preferences)
-- [ ] Profile picture upload
-- [ ] Profile editing interface
+- [x] Settings page (language, notifications, preferences)
+- [x] Profile picture upload
+- [x] Profile editing interface
+- [x] Farm management component with add/edit/delete
+- [x] Activity feed component with timeline
 
 ## Phase 3: Social Media Integration & Trust Building
 - [ ] Facebook integration in footer
