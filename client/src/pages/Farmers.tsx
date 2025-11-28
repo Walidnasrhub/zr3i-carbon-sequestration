@@ -3,6 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, TrendingUp, Leaf, DollarSign } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Navigation } from "@/components/Navigation";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { TrustBadges } from "@/components/TrustBadges";
+import { CommunityHighlights } from "@/components/CommunityHighlights";
 
 const translations = {
   en: {
@@ -124,6 +127,24 @@ export default function Farmers() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="container">
+          <h2 className="text-4xl font-bold text-center mb-12">
+            {language === "en" ? "What Farmers Say" : "ماذا يقول المزارعون"}
+          </h2>
+          <TestimonialCarousel />
+        </div>
+      </section>
+
+      {/* Trust Badges Section */}
+      <TrustBadges />
+
+      {/* Community Highlights */}
+      <section className="py-20 bg-white">
+        <CommunityHighlights />
       </section>
 
       {/* Success Stories Section */}
