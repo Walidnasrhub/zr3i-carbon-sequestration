@@ -11,6 +11,7 @@ import Investors from "./pages/Investors";
 import Partners from "./pages/Partners";
 import Enterprise from "./pages/Enterprise";
 import About from "./pages/About";
+import Register from "./pages/Register";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
       <Route path={"/partners"} component={Partners} />
       <Route path={"/enterprise"} component={Enterprise} />
       <Route path={"/about"} component={About} />
+      <Route path={"/register"} component={Register} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

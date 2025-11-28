@@ -1,93 +1,156 @@
-# Zr3i Carbon Sequestration Website - TODO
+# Zr3i Carbon Sequestration Platform - Complete Build
 
-## Phase 1: Bilingual Support (Arabic/English)
-- [x] Create language context and provider
-- [x] Add language toggle in navigation header
-- [x] Translate all page content to Arabic
-- [x] Implement RTL layout support for Arabic
-- [x] Add language preference persistence
+## COMPLETED WORK (Previous Phases)
+- [x] Bilingual support (Arabic/English)
+- [x] Contact form with validation
+- [x] Basic carbon calculator
+- [x] Multi-page website architecture
+- [x] Landing pages for Farmers, Investors, Partners, Enterprise, About
 
-## Phase 2: Functional Contact Form
-- [x] Create contact form component with validation
-- [x] Add tRPC procedure for form submission
-- [x] Integrate email sending to info@zr3i.com (via owner notification)
-- [x] Add success/error notifications
-- [x] Store submissions in database (via notification system)
+## Phase 1: User Registration & Authentication System (FOUNDATIONAL)
+- [x] Email/password registration form with validation
+- [ ] Social login integration (Google/Facebook)
+- [ ] Magic link passwordless authentication
+- [ ] JWT token management and session handling
+- [x] User profile creation and management
+- [x] Bilingual registration flow (Arabic/English)
+- [ ] Password reset functionality
+- [ ] Email verification system
+- [x] Secure password hashing
 
-## Phase 3: Interactive Carbon Calculator
-- [x] Create calculator component with inputs
-- [x] Build calculation logic (farm size → CO₂ sequestration)
-- [x] Add tRPC procedure for calculations
-- [x] Display results with visualizations
-- [x] Add export/share functionality
+## Phase 2: Farmer Profiles & Dashboard
+- [ ] Farmer profile page with personal information
+- [ ] Farm details management (name, location, size, crops)
+- [ ] Multi-farm support in single account
+- [ ] Personalized dashboard with farm overview
+- [ ] Recent activity feed
+- [ ] Key metrics display (carbon balance, income projections)
+- [ ] Document center for farm documents
+- [ ] Settings page (language, notifications, preferences)
+- [ ] Profile picture upload
+- [ ] Profile editing interface
 
-## Phase 4: Email Notifications & SendGrid Integration
-- [ ] Set up SendGrid account and API key
-- [ ] Install SendGrid npm package
-- [ ] Create email templates for contact form confirmations
-- [ ] Create email templates for admin notifications
-- [ ] Implement SendGrid integration in contact form handler
-- [ ] Test email sending functionality
-- [ ] Add email configuration to environment variables
+## Phase 3: Social Media Integration & Trust Building
+- [ ] Facebook integration in footer
+- [ ] LinkedIn company page integration
+- [ ] Social sharing buttons for calculator results
+- [ ] WhatsApp sharing functionality
+- [ ] Twitter sharing functionality
+- [ ] Farmer testimonials carousel (3-5 testimonials)
+- [ ] Partner logos section
+- [ ] Live impact counter (animated CO₂ and farmer income)
+- [ ] Verification badges display
+- [ ] Follow buttons for social media
 
-## Phase 5: Multi-Page Website Architecture
-- [x] Create routing structure for new pages
-- [x] Set up navigation menu with page links
-- [x] Create page layout wrapper component
-- [x] Implement breadcrumb navigation
-- [x] Add footer with links and contact info
-- [x] Create 404 error page
+## Phase 4: Farm Mapping & Satellite Integration
+- [ ] Leaflet.js map implementation
+- [ ] OpenStreetMap integration
+- [ ] Farm boundary drawing tool
+- [ ] Polygon drawing for field boundaries
+- [ ] Multi-field support
+- [ ] Automatic area calculation (hectares/acres)
+- [ ] Boundary adjustment tools
+- [ ] Mobile-optimized touch controls
+- [ ] Sentinel Hub OGC API integration
+- [ ] NDVI calculation and visualization
+- [ ] NDWI calculation and visualization
+- [ ] MSAVI calculation and visualization
+- [ ] FAO SoilGrids API integration for soil data
+- [ ] OpenWeatherMap API integration
+- [ ] Satellite imagery overlay on maps
+- [ ] Color-coded health maps
+- [ ] Problem area identification
+- [ ] 30-day historical comparison
+- [ ] Exportable maps as PDF
 
-## Phase 6: Dedicated Landing Pages
+## Phase 5: Carbon Footprint Calculation System
+- [ ] Energy calculator (diesel, electricity, fuel)
+- [ ] Input management (fertilizers, pesticides, herbicides)
+- [ ] Livestock module (enteric fermentation, manure)
+- [ ] Soil practices tracking (tillage, residue burning)
+- [ ] Transportation logging (equipment and product transport)
+- [ ] Date palm carbon models by age and species
+- [ ] Soil organic carbon tracking
+- [ ] Biomass accumulation calculations
+- [ ] Agroforestry system carbon benefits
+- [ ] Pre-farm gate emissions calculation
+- [ ] On-farm activities emissions and removals
+- [ ] Net carbon balance calculation
+- [ ] Certification-ready report formatting
+- [ ] Personalized carbon dashboard
+- [ ] Regional benchmarking comparison
+- [ ] Reduction recommendations engine
+- [ ] Historical tracking (year-over-year)
+- [ ] Exportable PDF reports
 
-### For Farmers
-- [x] Create Farmers landing page with benefits
-- [x] Add farmer success stories section
-- [x] Create step-by-step onboarding guide
-- [ ] Add FAQ section for farmers
-- [x] Create "How It Works" explainer section
-- [ ] Add farmer testimonials carousel
+## Phase 6: Advanced Reporting & Analytics
+- [ ] User behavior analytics (registration funnels, usage)
+- [ ] Calculator usage tracking
+- [ ] Feature engagement metrics
+- [ ] Conversion tracking (form submissions, shares, downloads)
+- [ ] Page load time monitoring
+- [ ] User retention metrics
+- [ ] Feature adoption tracking
+- [ ] Regional farmer insights
+- [ ] Common practices analysis
+- [ ] Challenge identification
 
-### For Investors
-- [x] Create Investors landing page
-- [x] Add investment opportunity details
-- [x] Create financial projections section
-- [x] Add impact metrics and ROI calculations
-- [x] Create case studies section
-- [ ] Add investor resources and documents
+## Phase 7: Communication & Knowledge Base
+- [ ] Contact form auto-responder (bilingual)
+- [ ] SMS integration with Twilio
+- [ ] WhatsApp Business integration
+- [ ] In-app notification center
+- [ ] Comprehensive FAQ section
+- [ ] Educational content library
+- [ ] Video tutorials (farm mapping, calculator, registration)
+- [ ] Downloadable guides and templates
+- [ ] Compliance documents
 
-### For Partners
-- [x] Create Partners landing page
-- [x] Add partnership opportunities section
-- [x] Create partnership benefits overview
-- [ ] Add partner testimonials
-- [ ] Create partnership application form
-- [ ] Add partner resources
+## Phase 8: PWA & Performance Optimization
+- [ ] Web app manifest creation
+- [ ] Mobile home screen installation
+- [ ] Offline functionality for calculator
+- [ ] Offline farm data access
+- [ ] Push notifications implementation
+- [ ] Lazy loading for charts and maps
+- [ ] Image optimization and compression
+- [ ] Code splitting by features
+- [ ] API response caching (24-hour)
+- [ ] Rate limit monitoring and alerts
+- [ ] Fallback systems for API limits
+- [ ] Queue management for high demand
 
-### For Enterprises
-- [x] Create Enterprise Solutions page
-- [x] Add bulk carbon credit purchase options
-- [x] Create enterprise pricing section
-- [ ] Add enterprise case studies
-- [ ] Create enterprise contact form
-- [ ] Add API documentation link
+## Phase 9: Testing & Deployment
+- [ ] Unit tests for calculations
+- [ ] Integration tests for API endpoints
+- [ ] E2E tests for user flows
+- [ ] Mobile responsiveness testing
+- [ ] Bilingual content testing
+- [ ] Accessibility testing (WCAG 2.1 AA)
+- [ ] Performance testing
+- [ ] Security testing
+- [ ] Free tier API limit testing
+- [ ] Production deployment
+- [ ] Monitoring and error tracking setup
 
-### General Pages
-- [x] Create About Us page with company mission
-- [ ] Create Blog/Resources page structure
-- [ ] Create Pricing page with subscription tiers
-- [ ] Create FAQ page with comprehensive Q&A
-- [ ] Create Terms of Service page
-- [ ] Create Privacy Policy page
-- [ ] Create Contact Us page with contact form
+## Technical Setup
+- [ ] Configure Drizzle ORM for database
+- [ ] Set up Express.js server routes
+- [ ] Configure tRPC procedures
+- [ ] Implement JWT authentication
+- [ ] Set up Vercel Blob Storage
+- [ ] Configure SendGrid/Resend for email
+- [ ] Set up Twilio for SMS
+- [ ] Implement error handling and logging
+- [ ] Set up environment variables
+- [ ] Configure CORS and security headers
 
-## Phase 7: Testing & Deployment
-- [ ] Test all page routing and navigation
-- [ ] Test email notifications for all forms
-- [ ] Test responsive design on mobile devices
-- [ ] Test bilingual support on all pages
-- [ ] Verify SEO meta tags on all pages
-- [ ] Performance optimization and testing
-- [ ] Cross-browser compatibility testing
-- [ ] Deploy to Vercel
-- [ ] Verify all pages live on zr3i.com
+## Deployment & DevOps
+- [ ] Fix Vercel routing configuration for SPA
+- [ ] Set up CI/CD pipeline
+- [ ] Configure monitoring and alerts
+- [ ] Set up error tracking (Sentry)
+- [ ] Configure analytics (Plausible or similar)
+- [ ] Set up backup strategy
+- [ ] Document deployment process
+- [ ] Create runbook for common issues
