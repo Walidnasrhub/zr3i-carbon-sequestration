@@ -1,1 +1,1 @@
-web: node dist/index.js
+web: pnpm build && node dist/index.js

@@ -1,15 +1,5 @@
 {
-  "buildCommand": "pnpm build",
+  "buildCommand": "pnpm build && cp dist/index.js api/index.js",
   "installCommand": "pnpm install",
-  "outputDirectory": "dist/public",
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/dist/index.js"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/dist/index.js"
-    }
-  ]
+  "outputDirectory": "dist/public"
 }
