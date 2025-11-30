@@ -11,8 +11,8 @@ import Investors from "./pages/Investors";
 import Partners from "./pages/Partners";
 import Enterprise from "./pages/Enterprise";
 import About from "./pages/About";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
 import ProfileSettings from "./pages/ProfileSettings";
 import FarmMapping from "./pages/FarmMapping";
@@ -30,8 +30,8 @@ function Router() {
       <Route path={"/partners"} component={Partners} />
       <Route path={"/enterprise"} component={Enterprise} />
       <Route path={"/about"} component={About} />
-      <Route path={"/register"} component={Register} />
-      <Route path={"/login"} component={Login} />
+      <Route path={"/register"} component={RegisterPage} />
+      <Route path={"/login"} component={LoginPage} />
       <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/profile"} component={ProfileSettings} />
       <Route path={"/farm-mapping"} component={FarmMapping} />
