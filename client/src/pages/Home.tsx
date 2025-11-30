@@ -8,7 +8,7 @@ import { LanguageToggle } from "@/components/LanguageToggle";
 import { ContactForm } from "@/components/ContactForm";
 import { CarbonCalculator } from "@/components/CarbonCalculator";
 import { FarmMap } from "@/components/FarmMap";
-import { SatelliteViewer } from "@/components/SatelliteViewer";
+import { SatelliteViewerWorking } from "@/components/SatelliteViewerWorking";
 
 interface StatCounterProps {
   value: number;
@@ -145,7 +145,7 @@ export default function Home() {
             </p>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-2xl border border-cyan-200">
-            <SatelliteViewer latitude={30.0444} longitude={31.2357} />
+            <SatelliteViewerWorking farmName="Demo Farm - Egypt" latitude={30.0444} longitude={31.2357} />
           </div>
         </div>
       </section>
