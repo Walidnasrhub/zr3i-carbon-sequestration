@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
+import "leaflet-draw";
 import "@/styles/farm-map.css";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -32,174 +33,187 @@ export function FarmMap({
   const { language } = useLanguage();
 
   useEffect(() => {
-    if (!mapContainer.current) return;
+    if (!mapContainer.current || map.current) return;
 
-    // Initialize map
-    map.current = L.map(mapContainer.current).setView(
-      [initialLat, initialLng],
-      initialZoom
-    );
+    try {
+      // Initialize map
+      map.current = L.map(mapContainer.current).setView(
+        [initialLat, initialLng],
+        initialZoom
+      );
 
-    // Add OpenStreetMap tiles
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 19,
-    }).addTo(map.current);
+      // Add OpenStreetMap tiles
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19,
+      }).addTo(map.current);
 
-    // Create feature group for drawn items
-    drawnItems.current = new L.FeatureGroup();
-    map.current.addLayer(drawnItems.current);
+      // Create feature group for drawn items
+      drawnItems.current = new L.FeatureGroup();
+      map.current.addLayer(drawnItems.current);
 
-    // Add drawing controls
-    const drawControl = new (L.Control as any).Draw({
-      position: "topright",
-      draw: {
-        polygon: {
-          allowIntersection: false,
-          drawError: {
-            color: "#e1e100",
-            message: "<strong>Oh snap!</strong> you can't draw that!",
+      // Add drawing controls using proper Leaflet Draw API
+      const DrawControl = (L.Control as any).Draw;
+      if (DrawControl) {
+        const drawControl = new DrawControl({
+          position: "topright",
+          draw: {
+            polygon: {
+              allowIntersection: false,
+              drawError: {
+                color: "#e1e100",
+                message: "<strong>Error!</strong> Shape cannot intersect",
+              },
+              shapeOptions: {
+                color: "#00bcd4",
+                weight: 2,
+                opacity: 0.8,
+                fill: true,
+                fillColor: "#00bcd4",
+                fillOpacity: 0.2,
+              },
+            },
+            polyline: {
+              shapeOptions: {
+                color: "#00bcd4",
+                weight: 2,
+                opacity: 0.8,
+              },
+            },
+            rectangle: {
+              shapeOptions: {
+                color: "#00bcd4",
+                weight: 2,
+                opacity: 0.8,
+                fill: true,
+                fillColor: "#00bcd4",
+                fillOpacity: 0.2,
+              },
+            },
+            circle: false,
+            marker: false,
+            circlemarker: false,
           },
-          shapeOptions: {
-            color: "#00bcd4",
-            weight: 2,
-            opacity: 0.8,
-            fill: true,
-            fillColor: "#00bcd4",
-            fillOpacity: 0.2,
+          edit: {
+            featureGroup: drawnItems.current,
+            remove: true,
           },
-        },
-        polyline: {
-          shapeOptions: {
-            color: "#00bcd4",
-            weight: 2,
-            opacity: 0.8,
-          },
-        },
-        rectangle: {
-          shapeOptions: {
-            color: "#00bcd4",
-            weight: 2,
-            opacity: 0.8,
-            fill: true,
-            fillColor: "#00bcd4",
-            fillOpacity: 0.2,
-          },
-        },
-        circle: false,
-        marker: false,
-        circlemarker: false,
-      },
-      edit: {
-        featureGroup: drawnItems.current,
-        remove: true,
-      },
-    });
+        });
 
-    map.current.addControl(drawControl);
+        map.current.addControl(drawControl);
 
-    // Handle drawing events
-    map.current.on("draw:created", (e: any) => {
-      const layer = e.layer;
-      drawnItems.current?.addLayer(layer);
-      calculateArea();
-      if (onBoundaryChange) {
-        onBoundaryChange(drawnItems.current?.toGeoJSON());
+        // Handle drawing events
+        map.current.on("draw:created", (e: any) => {
+          const layer = e.layer;
+          drawnItems.current?.addLayer(layer);
+          calculateArea();
+          if (onBoundaryChange) {
+            onBoundaryChange(drawnItems.current?.toGeoJSON());
+          }
+        });
+
+        map.current.on("draw:edited", () => {
+          calculateArea();
+          if (onBoundaryChange) {
+            onBoundaryChange(drawnItems.current?.toGeoJSON());
+          }
+        });
+
+        map.current.on("draw:deleted", () => {
+          calculateArea();
+          if (onBoundaryChange) {
+            onBoundaryChange(drawnItems.current?.toGeoJSON());
+          }
+        });
+      } else {
+        console.warn("Leaflet Draw not available");
       }
-    });
-
-    map.current.on("draw:edited", () => {
-      calculateArea();
-      if (onBoundaryChange) {
-        onBoundaryChange(drawnItems.current?.toGeoJSON());
-      }
-    });
-
-    map.current.on("draw:deleted", () => {
-      calculateArea();
-      if (onBoundaryChange) {
-        onBoundaryChange(drawnItems.current?.toGeoJSON());
-      }
-    });
-
-    const calculateArea = () => {
-      const data = drawnItems.current?.toGeoJSON();
-      if (data && 'features' in data && data.features.length > 0) {
-        const feature = data.features[0];
-        if (feature.geometry.type === "Polygon") {
-          const coords = feature.geometry.coordinates[0];
-          const area = calculatePolygonArea(coords);
-          const hectares = area / 10000; // 1 hectare = 10,000 m²
-          const acres = hectares * 2.471; // 1 hectare = 2.471 acres
-          setAreaInfo({
-            hectares: Math.round(hectares * 100) / 100,
-            acres: Math.round(acres * 100) / 100,
-          });
-        }
-      }
-    };
+    } catch (error) {
+      console.error("Error initializing map:", error);
+    }
 
     return () => {
-      if (map.current) {
-        map.current.remove();
-      }
+      map.current?.remove();
+      map.current = null;
     };
-  }, [initialLat, initialLng, initialZoom, onBoundaryChange]);
+  }, []);
 
-  const calculatePolygonArea = (coords: any[]): number => {
-    let area = 0;
-    for (let i = 0; i < coords.length - 1; i++) {
-      const [lng1, lat1] = coords[i];
-      const [lng2, lat2] = coords[i + 1];
-      area += (lng2 - lng1) * (lat2 + lat1);
+  const calculateArea = () => {
+    if (!drawnItems.current) return;
+
+    const layers = drawnItems.current.getLayers();
+    if (layers.length === 0) {
+      setAreaInfo(null);
+      return;
     }
-    return Math.abs(area) * 6371000 * 6371000 * 0.5 * (Math.PI / 180);
+
+    let totalArea = 0;
+    layers.forEach((layer: any) => {
+      if (layer.getLatLngs) {
+        const latlngs = layer.getLatLngs();
+        const area = calculatePolygonArea(latlngs);
+        totalArea += area;
+      }
+    });
+
+    const hectares = totalArea / 10000;
+    const acres = hectares * 2.47105;
+
+    setAreaInfo({
+      hectares: Math.round(hectares * 100) / 100,
+      acres: Math.round(acres * 100) / 100,
+    });
+  };
+
+  const calculatePolygonArea = (latlngs: any[]): number => {
+    let area = 0;
+    const R = 6371000; // Earth radius in meters
+
+    for (let i = 0; i < latlngs.length; i++) {
+      const p1 = latlngs[i];
+      const p2 = latlngs[(i + 1) % latlngs.length];
+
+      const lat1 = (p1.lat * Math.PI) / 180;
+      const lat2 = (p2.lat * Math.PI) / 180;
+      const dLng = ((p2.lng - p1.lng) * Math.PI) / 180;
+
+      area += (dLng * (2 + Math.sin(lat1) + Math.sin(lat2))) / 2;
+    }
+
+    return Math.abs(area * R * R);
+  };
+
+  const exportGeoJSON = () => {
+    if (!drawnItems.current) return;
+    const geojson = drawnItems.current.toGeoJSON();
+    const dataStr = JSON.stringify(geojson, null, 2);
+    const dataBlob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `farm-boundary-${new Date().toISOString().split("T")[0]}.geojson`;
+    link.click();
   };
 
   return (
-    <div className="w-full space-y-4">
-      <Card className="p-4">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-bold text-slate-900">
-            {language === "en" ? "Farm Boundary" : "حدود المزرعة"}
-          </h3>
-          {areaInfo && (
-            <div className="text-sm text-slate-600">
-              {language === "en"
-                ? `Area: ${areaInfo.hectares} ha (${areaInfo.acres} ac)`
-                : `المساحة: ${areaInfo.hectares} هكتار (${areaInfo.acres} فدان)`}
-            </div>
-          )}
-        </div>
-        <div
-          ref={mapContainer}
-          className="w-full h-96 rounded-lg border border-slate-300"
-        />
-        <p className="text-xs text-slate-500 mt-2">
-          {language === "en"
-            ? "Draw a polygon or rectangle to define your farm boundaries"
-            : "ارسم مضلع أو مستطيل لتحديد حدود مزرعتك"}
-        </p>
-      </Card>
+    <div className="space-y-4">
+      <div ref={mapContainer} className="w-full h-96 rounded-lg border border-cyan-200 shadow-lg" />
 
       {areaInfo && (
-        <Card className="p-4 bg-cyan-50 border-cyan-200">
-          <h4 className="font-bold text-slate-900 mb-2">
-            {language === "en" ? "Farm Area Details" : "تفاصيل مساحة المزرعة"}
-          </h4>
+        <Card className="p-4 bg-gradient-to-br from-cyan-50 to-blue-50 border-cyan-200">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <p className="text-sm text-slate-600">
-                {language === "en" ? "Hectares" : "الهكتارات"}
+              <p className="text-sm text-navy-700 font-medium">
+                {language === "ar" ? "المساحة (هكتار)" : "Area (Hectares)"}
               </p>
               <p className="text-2xl font-bold text-cyan-600">
                 {areaInfo.hectares}
               </p>
             </div>
             <div>
-              <p className="text-sm text-slate-600">
-                {language === "en" ? "Acres" : "الأفدنة"}
+              <p className="text-sm text-navy-700 font-medium">
+                {language === "ar" ? "المساحة (فدان)" : "Area (Acres)"}
               </p>
               <p className="text-2xl font-bold text-cyan-600">
                 {areaInfo.acres}
@@ -208,6 +222,15 @@ export function FarmMap({
           </div>
         </Card>
       )}
+
+      <div className="flex gap-2">
+        <Button
+          onClick={exportGeoJSON}
+          className="bg-cyan-600 hover:bg-cyan-700 text-white"
+        >
+          {language === "ar" ? "تصدير GeoJSON" : "Export GeoJSON"}
+        </Button>
+      </div>
     </div>
   );
 }
