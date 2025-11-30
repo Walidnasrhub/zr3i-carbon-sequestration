@@ -7,6 +7,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { ContactForm } from "@/components/ContactForm";
 import { CarbonCalculator } from "@/components/CarbonCalculator";
+import { FarmMap } from "@/components/FarmMap";
+import { SatelliteViewer } from "@/components/SatelliteViewer";
 
 interface StatCounterProps {
   value: number;
@@ -120,18 +122,70 @@ export default function Home() {
 
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/30 to-lime-400/30 rounded-2xl blur-2xl"></div>
-              <img
-                src="/hero-carbon-flow.png"
-                alt="Carbon Sequestration Process"
-                className="relative rounded-2xl shadow-2xl w-full h-auto"
-              />
+              <div className="relative rounded-2xl shadow-2xl w-full h-auto bg-gradient-to-br from-cyan-100 to-lime-100 p-8 flex items-center justify-center min-h-96">
+                <div className="text-center">
+                  <Leaf className="w-24 h-24 text-cyan-600 mx-auto mb-4" />
+                  <p className="text-navy-900 font-bold text-lg">{language === 'ar' ? 'عملية عزل الكربون' : 'Carbon Sequestration Process'}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Live Satellite Viewer Demo */}
+      <section className="py-20 bg-white relative">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-navy-900 mb-4">
+              {language === 'ar' ? 'مراقبة الأقمار الصناعية الحية' : 'Live Satellite Monitoring'}
+            </h2>
+            <p className="text-lg text-navy-700 max-w-2xl mx-auto">
+              {language === 'ar' ? 'شاهد بيانات Sentinel-2 الفعلية مع حسابات NDVI والمؤشرات الأخرى' : 'View real Sentinel-2 data with NDVI calculations and other indices'}
+            </p>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-cyan-200">
+            <SatelliteViewer latitude={30.0444} longitude={31.2357} />
+          </div>
+        </div>
+      </section>
+
+      {/* Live Farm Mapping Demo */}
+      <section className="py-20 bg-gradient-to-b from-blue-50 to-white relative">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-navy-900 mb-4">
+              {language === 'ar' ? 'رسم حدود المزرعة التفاعلي' : 'Interactive Farm Mapping'}
+            </h2>
+            <p className="text-lg text-navy-700 max-w-2xl mx-auto">
+              {language === 'ar' ? 'ارسم حدود مزرعتك وحسب المساحة تلقائياً' : 'Draw your farm boundaries and calculate area automatically'}
+            </p>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-cyan-200 h-96">
+            <FarmMap initialLat={30.0444} initialLng={31.2357} initialZoom={13} />
+          </div>
+        </div>
+      </section>
+
+      {/* Live Carbon Calculator Demo */}
+      <section className="py-20 bg-white relative">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-navy-900 mb-4">
+              {language === 'ar' ? 'حاسبة الكربون التفاعلية' : 'Interactive Carbon Calculator'}
+            </h2>
+            <p className="text-lg text-navy-700 max-w-2xl mx-auto">
+              {language === 'ar' ? 'احسب عزل الكربون والدخل المتوقع لمزرعتك' : 'Calculate carbon sequestration and projected income for your farm'}
+            </p>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-cyan-200 p-8 bg-gradient-to-br from-blue-50 to-cyan-50">
+            <CarbonCalculator />
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
-      <section id="features" className="py-20 bg-white relative">
+      <section id="features" className="py-20 bg-gradient-to-b from-white to-blue-50 relative">
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-gradient-to-r from-cyan-500/5 via-transparent to-lime-500/5 rounded-full blur-3xl"></div>
         </div>
@@ -204,74 +258,6 @@ export default function Home() {
             <StatCounter value={2500} label={t('impact.farmers')} />
             <StatCounter value={450000} label={t('impact.credits')} suffix="+" />
           </div>
-
-          <div className="relative mt-12">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-lime-500/20 rounded-2xl blur-2xl"></div>
-            <img
-              src="/date-palm-impact.png"
-              alt="Date Palm Impact"
-              className="relative rounded-2xl shadow-2xl w-full h-auto max-h-96 object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Technology Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative order-2 lg:order-1">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/30 to-lime-400/30 rounded-2xl blur-2xl"></div>
-              <img
-                src="/farmers-technology.png"
-                alt="Farmer with Technology"
-                className="relative rounded-2xl shadow-2xl w-full h-auto"
-              />
-            </div>
-
-            <div className="space-y-6 order-1 lg:order-2">
-              <h2 className="text-4xl font-bold text-navy-900">
-                {t('tech.title')}
-              </h2>
-              <p className="text-lg text-navy-700 leading-relaxed">
-                {t('tech.description')}
-              </p>
-              <ul className="space-y-4">
-                {[
-                  t('tech.feature1'),
-                  t('tech.feature2'),
-                  t('tech.feature3'),
-                  t('tech.feature4'),
-                  t('tech.feature5')
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500 to-lime-500 flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white text-sm font-bold">✓</span>
-                    </div>
-                    <span className="text-navy-700 font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Carbon Calculator Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-navy-900 mb-4">
-              {language === 'ar' ? 'حاسبة الكربون التفاعلية' : 'Interactive Carbon Calculator'}
-            </h2>
-            <p className="text-lg text-navy-700 max-w-2xl mx-auto">
-              {language === 'ar' 
-                ? 'احسب إمكانات عزل الكربون والدخل المحتمل لمزرعتك'
-                : 'Calculate your farm carbon sequestration potential and income'
-              }
-            </p>
-          </div>
-          <CarbonCalculator />
         </div>
       </section>
 
@@ -279,91 +265,54 @@ export default function Home() {
       <section id="contact" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-navy-900 mb-4">{t('contact.title')}</h2>
+            <h2 className="text-4xl font-bold text-navy-900 mb-4">
+              {language === 'ar' ? 'تواصل معنا' : 'Get in Touch'}
+            </h2>
             <p className="text-lg text-navy-700 max-w-2xl mx-auto">
-              {t('contact.description')}
+              {language === 'ar' ? 'لديك أسئلة؟ نحن هنا للمساعدة' : 'Have questions? We are here to help'}
             </p>
           </div>
-
-          <div className="mb-12">
+          <div className="max-w-2xl mx-auto">
             <ContactForm />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            <Card className="p-8 text-center hover:shadow-lg transition-shadow duration-300 border-cyan-200">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mx-auto mb-4">
-                <Mail className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="font-bold text-lg text-navy-900 mb-2">{t('contact.email')}</h3>
-              <a href="mailto:info@zr3i.com" className="text-cyan-600 hover:text-cyan-700 font-medium">
-                {t('contact.email.value')}
-              </a>
-            </Card>
-
-            <Card className="p-8 text-center hover:shadow-lg transition-shadow duration-300 border-cyan-200">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-lime-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="font-bold text-lg text-navy-900 mb-2">{t('contact.phone')}</h3>
-              <a href="tel:+201006055320" className="text-cyan-600 hover:text-cyan-700 font-medium">
-                {t('contact.phone.value')}
-              </a>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-cyan-600 to-lime-500 rounded-2xl p-12 text-center text-white shadow-2xl">
-            <h2 className="text-4xl font-bold mb-4">{t('cta.title')}</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto opacity-95">
-              {t('cta.description')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-white text-cyan-600 hover:bg-gray-100 px-8 py-6 text-base font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                {t('cta.primary')}
-              </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-base font-semibold rounded-lg">
-                {t('cta.secondary')}
-              </Button>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-navy-900 text-white py-12 border-t border-navy-800">
+      <footer className="bg-navy-900 text-white py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-lime-500 flex items-center justify-center">
-                  <Leaf className="w-5 h-5 text-navy-900" />
-                </div>
+                <Leaf className="w-6 h-6 text-cyan-400" />
                 <span className="font-bold text-lg">Zr3i</span>
               </div>
-              <p className="text-cyan-200 text-sm">{t('footer.tagline')}</p>
+              <p className="text-cyan-200 text-sm">{language === 'ar' ? 'منصة عزل الكربون للمزارعين' : 'Carbon Sequestration Platform for Farmers'}</p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">{t('footer.links')}</h4>
-              <ul className="space-y-2 text-sm text-cyan-200">
-                <li><a href="#features" className="hover:text-cyan-400 transition-colors">{t('nav.features')}</a></li>
-                <li><a href="#impact" className="hover:text-cyan-400 transition-colors">{t('nav.impact')}</a></li>
-                <li><a href="#contact" className="hover:text-cyan-400 transition-colors">{t('nav.contact')}</a></li>
+              <h4 className="font-bold mb-4">{language === 'ar' ? 'المنتج' : 'Product'}</h4>
+              <ul className="space-y-2 text-cyan-200 text-sm">
+                <li><a href="#features" className="hover:text-cyan-400 transition">{language === 'ar' ? 'الميزات' : 'Features'}</a></li>
+                <li><a href="#impact" className="hover:text-cyan-400 transition">{language === 'ar' ? 'التأثير' : 'Impact'}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">{t('footer.contact')}</h4>
-              <ul className="space-y-2 text-sm text-cyan-200">
-                <li><a href="mailto:info@zr3i.com" className="hover:text-cyan-400 transition-colors">{t('contact.email.value')}</a></li>
-                <li><a href="tel:+201006055320" className="hover:text-cyan-400 transition-colors">{t('contact.phone.value')}</a></li>
+              <h4 className="font-bold mb-4">{language === 'ar' ? 'الشركة' : 'Company'}</h4>
+              <ul className="space-y-2 text-cyan-200 text-sm">
+                <li><a href="#" className="hover:text-cyan-400 transition">{language === 'ar' ? 'من نحن' : 'About'}</a></li>
+                <li><a href="#" className="hover:text-cyan-400 transition">{language === 'ar' ? 'المدونة' : 'Blog'}</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">{language === 'ar' ? 'القانوني' : 'Legal'}</h4>
+              <ul className="space-y-2 text-cyan-200 text-sm">
+                <li><a href="#" className="hover:text-cyan-400 transition">{language === 'ar' ? 'الخصوصية' : 'Privacy'}</a></li>
+                <li><a href="#" className="hover:text-cyan-400 transition">{language === 'ar' ? 'الشروط' : 'Terms'}</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-navy-800 pt-8 text-center text-sm text-cyan-300">
-            <p>{t('footer.copyright')}</p>
+          <div className="border-t border-cyan-800 pt-8 text-center text-cyan-200 text-sm">
+            <p>&copy; 2025 Zr3i. {language === 'ar' ? 'جميع الحقوق محفوظة' : 'All rights reserved'}.</p>
           </div>
         </div>
       </footer>
